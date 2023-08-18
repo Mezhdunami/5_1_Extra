@@ -11,11 +11,11 @@ class Program
         Car car4 = new Car("Volkswagen", 10000, 150);
         Car car5 = new Car();
                               //  BP  , MS,       ,DIST , ACT
-        Car car6 = new Car("Audi",120000,120,"Black",150000,0);  //Used car
+        Car car6 = new Car("Audi",120000,120,"Black",150000,0,100);  //Used car
         Car car7 = new Car();
 
 
-       car6.GetInfo();
+        car6.tripCost();
         
 
        
