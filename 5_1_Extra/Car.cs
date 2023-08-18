@@ -153,12 +153,9 @@ namespace _5_1_Extra
                 // Car actual price depends on the distance a car has already traveled. With each kilometer car actual price is descreasing on 0.1 points
                 else
                 {
-                    _CarActPrice = BuyingPrice;
-                    while (Distance>0)
-                    {
-                        _CarActPrice = _CarActPrice - 0.1;
-                        Distance--;
-                    }
+                    double descrease = Distance * 0.1;
+                    _CarActPrice = BuyingPrice - descrease;
+                    
                    
                 }
             }
@@ -172,7 +169,7 @@ namespace _5_1_Extra
             
         }
 
-        public Car(string name, double buyingPrice, double maxSpeed,string color,double distance, double carActPrice)
+        public Car(string name, double buyingPrice, double maxSpeed,string color,double distance, double carActPrice,double taxPrice)
         {
             Name = name;
             BuyingPrice = buyingPrice;
@@ -180,6 +177,7 @@ namespace _5_1_Extra
             Color = color;
             Distance = distance;
             CarActPrice = carActPrice;
+            TaxPrice = taxPrice;
 
         }
 
@@ -202,7 +200,33 @@ namespace _5_1_Extra
 
         public void tripCost()
         {
+
+            double ActPriceCoef = BuyingPrice / CarActPrice;
+
+            double MaxSpeedCoef;
+
+            if ( MaxSpeed < 140 )
+            {
+                MaxSpeedCoef = 1;
+            }
+            else if(MaxSpeed >140 && MaxSpeed<180)
+            {
+                MaxSpeedCoef = 1.5;
+            }
+            else if (MaxSpeed >180)
+            {
+                MaxSpeedCoef = 2;
+            }
+            else
+            {
+                MaxSpeedCoef = 3;
+            }
+
             Console.WriteLine("Input the distance you wants to travel: ");
+            double Cost =double.Parse(Console.ReadLine());
+            double answer = Cost * ActPriceCoef * MaxSpeedCoef * TaxPrice;
+
+            Console.WriteLine($"{answer:C}");
 
         }
 
