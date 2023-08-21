@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace _5_1_Extra
 {
+
+    public enum CarColor
+    {
+        Black,
+        White,
+        Green
+    }
     public class Car
     {
         private string _name;
@@ -61,23 +68,7 @@ namespace _5_1_Extra
             }
         }
 
-        private string _color = "Green";
-        public string Color
-        {
-            get { return _color; }
-            set
-            {
-            
-                if (value == "Black" || value == "White" || value == "Green")
-                {
-                    _color = value;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid color. Choose from: Black, White, Green.");
-                }
-            }
-        }
+        
 
         private double _Distance = 0;
         public double Distance
@@ -119,9 +110,21 @@ namespace _5_1_Extra
                 }
             }
         }
-  
-        public double CarActPrice { get; set; }
+
        
+
+        private CarColor _color = CarColor.Green;
+        public CarColor Color
+        {
+            get { return _color; }
+            set
+            {
+                _color = value;
+            }
+        }
+
+
+
 
         public Car(string name = "Toyota", double buyingPrice = 10000, double maxSpeed = 140)
         {
@@ -133,25 +136,21 @@ namespace _5_1_Extra
 
         public void GetInfo()
         {
-            Console.WriteLine($"Car make: {Name}\nBuying price: {BuyingPrice}$\nMax Speed: {MaxSpeed} KM/H\nColor: {Color}\nDistance: {Distance} KM\nCar actual price: {CarActPrice:C}" );
+            Console.WriteLine($"Car make: {Name}\nBuying price: {BuyingPrice}$\nMax Speed: {MaxSpeed} KM/H\nColor: {Color}\nDistance: {Distance} KM" );
         }
         //- Calculate Car actual price. If car have been not used Car actual price equals to Car buying price.
 
         public double GetActualPrice()
-       {
-            double decrease;
-            if (Distance ==0)
+        {
+            if (Distance == 0)
             {
-                CarActPrice = BuyingPrice;
+                return BuyingPrice;
             }
             else
             {
-                double descrease = Distance * 0.1;
-                CarActPrice = BuyingPrice - descrease;
-
+                double decrease = BuyingPrice * 0.1;
+                return BuyingPrice - decrease;
             }
-            return CarActPrice;
-          
         }
 
 
@@ -160,7 +159,7 @@ namespace _5_1_Extra
         public void tripCost()
         {
 
-            double ActPriceCoef = BuyingPrice / CarActPrice;
+            double ActPriceCoef = BuyingPrice / GetActualPrice();
 
             double MaxSpeedCoef = 0;
             if (MaxSpeed <140)
@@ -184,6 +183,8 @@ namespace _5_1_Extra
             Console.WriteLine($"{answer:C}");
 
         }
+
+        
 
    
 

@@ -1,5 +1,6 @@
 ﻿using _5_1_Extra;
 using System.Drawing;
+using System.Xml;
 
 class Program
 {
@@ -14,11 +15,18 @@ class Program
 
         car1.Distance = 10;
         car1.TaxPrice = 10;
+        car1.Color = CarColor.White;
+       
+        
+        Console.WriteLine();
         car1.GetActualPrice();
         car1.GetInfo();
+        Console.WriteLine($"Actual Price: {car1.GetActualPrice():C}");
+
         Console.WriteLine("\n");
 
         car1.tripCost();
+        
 
 
 
