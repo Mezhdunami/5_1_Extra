@@ -1,24 +1,37 @@
 ﻿using _5_1_Extra;
-
+using System.Drawing;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Car car1 = new Car("BMW",15000,200);
-        Car car2 = new Car("Subaru", 11000, 210);
-        Car car3 = new Car("Lexus", 27000, 200);
-        Car car4 = new Car("Volkswagen", 10000, 150);
-        Car car5 = new Car();
-                              //  BP  , MS,       ,DIST , ACT
-        Car car6 = new Car("Audi",120000,120,"Black",150000,0,100);  //Used car
-        Car car7 = new Car();
-
-
-        car6.tripCost();
         
 
-       
+        Car car1 = new Car("Supra",120000,130);
+
+
+        //Calculate Car actual price.If car have been not used Car actual price equals to Car buying price.
+
+        car1.Distance = 10;
+        car1.TaxPrice = 10;
+        car1.GetActualPrice();
+        car1.GetInfo();
+        Console.WriteLine("\n");
+
+        car1.tripCost();
+
+
+
+
+
+
+
+
+
+        //Console.WriteLine($"Name:{car1.Name}\nBuying price:{car1.BuyingPrice}\nMax Speed:{car1.MaxSpeed}\nActual price:{car1.CarActPrice}\nDistance:{car1.Distance}\nColor:{car1.Color}");
+
+
+
 
 
     }

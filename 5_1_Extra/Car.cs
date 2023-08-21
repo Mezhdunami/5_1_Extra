@@ -8,28 +8,20 @@ namespace _5_1_Extra
 {
     public class Car
     {
-        private string _Name;
+        private string _name;
         public string Name
         {
-            get
-            {
-                return _Name;
-            }
-            set
-            {
-                _Name = value;
-            }
+            get { return _name; }
+
         }
-        private double _BuyingPrice;
+
+
+        private double _buyingPrice;
         public double BuyingPrice
         {
             get
             {
-                return _BuyingPrice;
-            }
-            set
-            {
-                _BuyingPrice = value;
+                return _buyingPrice;
             }
         }
         private double _MaxSpeed;
@@ -37,37 +29,29 @@ namespace _5_1_Extra
         {
             get
             {
+                if (_MaxSpeed< 0 || _MaxSpeed > 300000)
+                {
+                    Console.WriteLine("Enter a correct value");
+                    _MaxSpeed = 0;
+                    
+                }
                 return _MaxSpeed;
             }
-            set
-            {
-                if (value < 0)
-                {
-                    Console.WriteLine("Default value is 140");
-                }
-                else
-                {
-                    _MaxSpeed = value;
-                }
-                
-            }
+       
         }
 
         private double _CurrentSpeed;
-        public double CurrentSpeed
+        public double CurrentSpeed    //e, but it shouldn't be less than 0 and more than Max speed. 
         {
             get
             {
-              
                 return _CurrentSpeed;
-
-
             }
             set
             {
-                if (_CurrentSpeed < 0)
+                if (value < 0 || value > MaxSpeed)
                 {
-                    Console.WriteLine("0 Can't be a max speed");
+                    Console.WriteLine("ERROR! Try again");
                 }
                 else
                 {
@@ -77,28 +61,25 @@ namespace _5_1_Extra
             }
         }
 
-        private string _Color;
+        private string _color = "Green";
         public string Color
         {
-            get
-            {
-                return _Color;
-            }
+            get { return _color; }
             set
             {
-                if (value =="Black" || value =="White" || value =="Green")
+            
+                if (value == "Black" || value == "White" || value == "Green")
                 {
-                    _Color = value;
+                    _color = value;
                 }
                 else
                 {
-                    Console.WriteLine("No color of this type is available");
+                    Console.WriteLine("Invalid color. Choose from: Black, White, Green.");
                 }
-
             }
         }
 
-        private double _Distance;
+        private double _Distance = 0;
         public double Distance
         {
             get
@@ -115,8 +96,9 @@ namespace _5_1_Extra
                 {
                     _Distance = value;
                 }
+               
             }
-        }
+        } 
 
         private double _TaxPrice;
         public double TaxPrice
@@ -137,59 +119,15 @@ namespace _5_1_Extra
                 }
             }
         }
-        public double _CarActPrice;
-        public double CarActPrice
+  
+        public double CarActPrice { get; set; }
+       
+
+        public Car(string name = "Toyota", double buyingPrice = 10000, double maxSpeed = 140)
         {
-            get
-            {
-                return _CarActPrice;
-            }
-            set
-            {
-               if (Distance==0)
-                {
-                    _CarActPrice = BuyingPrice;
-                }
-                // Car actual price depends on the distance a car has already traveled. With each kilometer car actual price is descreasing on 0.1 points
-                else
-                {
-                    double descrease = Distance * 0.1;
-                    _CarActPrice = BuyingPrice - descrease;
-                    
-                   
-                }
-            }
-        }
-
-        public Car (string name, double buyingPrice, double maxSpeed)
-        {
-            Name = name;
-            BuyingPrice = buyingPrice;
-            MaxSpeed = maxSpeed;
-            
-        }
-
-        public Car(string name, double buyingPrice, double maxSpeed,string color,double distance, double carActPrice,double taxPrice)
-        {
-            Name = name;
-            BuyingPrice = buyingPrice;
-            MaxSpeed = maxSpeed;
-            Color = color;
-            Distance = distance;
-            CarActPrice = carActPrice;
-            TaxPrice = taxPrice;
-
-        }
-
-
-        public Car()
-        {
-            Name = "Toyota";
-            BuyingPrice = 10000;
-            MaxSpeed = 140;
-            Color = "Green";
-            Distance = 0;
-            TaxPrice = 0;
+            _name = name;
+            _buyingPrice=buyingPrice;
+            _MaxSpeed = maxSpeed;
         }
 
 
@@ -197,30 +135,47 @@ namespace _5_1_Extra
         {
             Console.WriteLine($"Car make: {Name}\nBuying price: {BuyingPrice}$\nMax Speed: {MaxSpeed} KM/H\nColor: {Color}\nDistance: {Distance} KM\nCar actual price: {CarActPrice:C}" );
         }
+        //- Calculate Car actual price. If car have been not used Car actual price equals to Car buying price.
+
+        public double GetActualPrice()
+       {
+            double decrease;
+            if (Distance ==0)
+            {
+                CarActPrice = BuyingPrice;
+            }
+            else
+            {
+                double descrease = Distance * 0.1;
+                CarActPrice = BuyingPrice - descrease;
+
+            }
+            return CarActPrice;
+          
+        }
+
+
+
 
         public void tripCost()
         {
 
             double ActPriceCoef = BuyingPrice / CarActPrice;
 
-            double MaxSpeedCoef;
-
-            if ( MaxSpeed < 140 )
+            double MaxSpeedCoef = 0;
+            if (MaxSpeed <140)
             {
                 MaxSpeedCoef = 1;
             }
-            else if(MaxSpeed >140 && MaxSpeed<180)
+            if (MaxSpeed>140 && MaxSpeed<180)
             {
                 MaxSpeedCoef = 1.5;
             }
-            else if (MaxSpeed >180)
+            if (MaxSpeed>180)
             {
                 MaxSpeedCoef = 2;
             }
-            else
-            {
-                MaxSpeedCoef = 3;
-            }
+        
 
             Console.WriteLine("Input the distance you wants to travel: ");
             double Cost =double.Parse(Console.ReadLine());
@@ -230,6 +185,7 @@ namespace _5_1_Extra
 
         }
 
+   
 
 
     }
