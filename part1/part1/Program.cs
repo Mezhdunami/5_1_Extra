@@ -6,14 +6,14 @@ class Program
     {
         Animal cat = new Animal
         {
-            Name = "Fluffy",
+            Name = "Fluffy The Cat",
             Age = 3,
             Color = Color.White
         };
 
         Animal cat2 = new Animal
         {
-            Name = "Dongle",
+            Name = "Dongle The Cat",
             Age = 5,
             Color = Color.Black
         };
@@ -32,13 +32,26 @@ class Program
 
         Person person = new Person
         {
-            Name = "John",
-            Surname = "Doe",
+            Name = "Charles",
+            Surname = "Bukowski",
             Age = 30,
             Pet = cat,
             FavoriteTVShow = favoriteTVShow
         };
 
-        person.PetAnimal(cat);
+        Person person2 = new Person
+        {
+            Name = "Alice",
+            Surname = "in Wonderland",
+            Age = 54,
+            Pet = cat2,
+            FavoriteTVShow = favoriteTVShow2
+        };
+
+        Console.WriteLine($"{person.Name} is petting his pet - {person.Pet.Name}");
+        Console.WriteLine($"{person.Name}'s favorite show is {person.FavoriteTVShow.Name}");
+        Console.WriteLine("\n");
+        Console.WriteLine($"{person2.Name} is petting her pet - {person2.Pet.Name}");
+        Console.WriteLine($"{person2.Name}'s favorite show is {person2.FavoriteTVShow.Name}");
     }
 }
