@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace part1
 {
- 
-
-    public class Animal
+    public enum Color
     {
-        public string Name { get; set; }
-        public int Age { get; set; }
-        public Color Color { get; set; }
+        Black,
+        White,
+        Brown
     }
-
+    public class Colors
+    {
+    }
 }
-

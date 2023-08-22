@@ -51,7 +51,8 @@ class Program
         Console.WriteLine($"{person.Name} is petting his pet - {person.Pet.Name}");
         Console.WriteLine($"{person.Name}'s favorite show is {person.FavoriteTVShow.Name}");
         Console.WriteLine("\n");
-        Console.WriteLine($"{person2.Name} is petting her pet - {person2.Pet.Name}");
+        Console.WriteLine($"{person2.Name} is petting her pet - {person2.Pet.Name}, her color is {person2.Pet.Color}");
         Console.WriteLine($"{person2.Name}'s favorite show is {person2.FavoriteTVShow.Name}");
+
     }
 }
