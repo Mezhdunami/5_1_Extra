@@ -7,12 +7,7 @@ using System.Threading.Tasks;
 namespace _5_1_Extra
 {
 
-    public enum CarColor
-    {
-        Black,
-        White,
-        Green
-    }
+
     public class Car
     {
         private string _name;
@@ -162,7 +157,7 @@ namespace _5_1_Extra
             double ActPriceCoef = BuyingPrice / GetActualPrice();
 
             double MaxSpeedCoef = 0;
-            if (MaxSpeed <140)
+            if (MaxSpeed <=140)
             {
                 MaxSpeedCoef = 1;
             }
