@@ -12,7 +12,6 @@ namespace part1
         public string Surname { get; set; }
         public int Age { get; set; }
         public Animal Pet { get; set; }
-        public Animal Pet2 { get; set; }
         public TVShow FavoriteTVShow { get; set; }
 
 
@@ -20,10 +19,7 @@ namespace part1
         {
             Pet.NowName = newNamee;
         }
-        public void RenamePet2(string newNamee)
-        {
-            Pet2.NowName = newNamee;
-        }
+
 
         public void CallPet(string nameToCall)
         {
@@ -37,16 +33,12 @@ namespace part1
             }
         }
 
-        public void CallPet2(string nameToCall)
+        public void PetAnimal(Animal animal)
         {
-            if (nameToCall == Pet2.NowName || nameToCall == Pet2.PreviousName)
-            {
-                Console.WriteLine("Hello");
-            }
-            else
-            {
-                Console.WriteLine("No reaction...");
-            }
+            Pet = animal;
+        }
+
+
         }
     }
-}
+
