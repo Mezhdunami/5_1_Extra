@@ -38,21 +38,22 @@ class Program
         //- Firstly Charles pets the dog and gives it a name "Snoopy". 
         person.PetAnimal(dog1);
         person.RenamePet("Snoopy");
+        Console.WriteLine($"{person.Name} pets the dog and gives it a name {person.Pet.NowName}\n");
         //- Charles calls the pet with "Korjik" and "Snoopy", and gets "Hello". Charles calls the pet with "Bobik" - "no reaction"
-        person.CallPet("Korjik");
-        person.CallPet("Snoopy");
-        person.CallPet("Bobik");
+        Console.Write($"{person.Name} calls the pet with Korjik and gets - "); person.CallPet("Korjik");
+        Console.Write($"{person.Name} calls the pet with Snoopy and gets - "); person.CallPet("Snoopy");
+        Console.Write($"{person.Name} calls the pet with Bobik and gets - "); person.CallPet("Bobik");
         Console.WriteLine();
         //- But Alice didn't know about it and also pet the Same dog
         //(Animals can be pet by different people). And Alice gave dog a name "Sushka".
         person2.PetAnimal(dog1);
         person2.RenamePet("Sushka");
         //- Alice calls the pet with "Sushka and gets "Hello". 
-        person2.CallPet("Sushka");
+        Console.Write($"{person2.Name} calls the pet with Sushka and gets - "); person2.CallPet("Sushka");
         Console.WriteLine();
         //- Charles calls his pet with a name "Snoopy" and gets "Hello", but when he calls the pet with "Korjik" - "no reaction".
-        person.CallPet("Snoopy");
-        person.CallPet("Korjik");
+        Console.Write($"{person.Name} calls the pet with Snoopy and gets - "); person.CallPet("Snoopy");
+        Console.Write($"{person.Name} calls the pet with Korjik and gets - "); person.CallPet("Korjik");
         //- Charles was upset and found another animal - a cat with name "Korjik" as well. Charles pets the cat without renaming.
         person.PetAnimal(cat2);
         //- Alice also sees the beatiful cat "Korjik" and decides to pet it as well. She gives her pet a name "Kitty"
@@ -62,13 +63,14 @@ class Program
         person.RenamePet("Meow");
         //- Charles calls the pet with "Korjik" - "no reaction".
         Console.WriteLine();
-        person.CallPet("Korjik");
+        Console.Write($"{person.Name} calls the pet with Korjik and gets - "); person.CallPet("Korjik");
         //- Charles calls the pet with "Snoopy" - "no reaction"
-        person.CallPet("Snoopy");
+        Console.Write($"{person.Name} calls the pet with Snoopy and gets - "); person.CallPet("Snoopy");
         //- Charles decides to pet the dog again instead of the cat.
         person.PetAnimal(dog1);
         //- Charles calls the pet with "Snoopy" -  "Hello"
-        person.CallPet("Snoopy");
+        Console.WriteLine();
+        Console.Write($"{person.Name} calls the pet with Snoopy and gets - "); person.CallPet("Snoopy");
 
 
 
